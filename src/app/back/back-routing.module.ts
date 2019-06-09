@@ -4,11 +4,13 @@ import { IndexComponent} from './index/index.component';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { Page3Component } from './page3/page3.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
     path: 'back',
     component: IndexComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'page1',
@@ -28,7 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { enableTracing: true })
+    RouterModule.forRoot(routes, { enableTracing: false })
   ],
   exports: [RouterModule]
 })
